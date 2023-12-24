@@ -1,5 +1,5 @@
 flask
 scikit-learn
 joblib
-secrets
+secrets==1.0.3
 gunicorn
