@@ -1,0 +1,120 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>House Price Prediction Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f2f2f2;
+        }
+
+        form {
+            max-width: 400px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #555;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+            display: block;
+            margin: 0 auto;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        h2, h3 {
+            color: #4CAF50;
+        }
+
+        .error-message {
+            color: #ff0000;
+            text-align: center;
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+
+    <form id="housePredictionForm" action='/prediction' method="POST">
+        <h2>House Price Prediction Form</h2>
+
+        <label for="bedrooms">Number of Bedrooms:</label>
+        <input type="number" value="{{ input_values.get('bedrooms', '') }}" id="bedrooms" name="bedrooms" required>
+
+        <label for="bathrooms">Number of Bathrooms:</label>
+        <input type="number" value="{{ input_values.get('bathrooms', '') }}" id="bathrooms" name="bathrooms" required>
+
+        <label for="sqftLiving">Sqft Living:</label>
+        <input type="number" value="{{ input_values.get('sqftLiving', '') }}" id="sqftLiving" name="sqftLiving" required>
+
+        <label for="sqftLot">Sqft Lot:</label>
+        <input type="number" id="sqftLot" value="{{ input_values.get('sqftLot', '') }}" name="sqftLot" required>
+
+        <label for="floors">Number of Floors:</label>
+        <input type="number" id="floors" value="{{ input_values.get('floors', '') }}" name="floors" required>
+
+        <label for="waterfront">Waterfront (0 or 1):</label>
+        <select id="waterfront" name="waterfront" value="{{ input_values.get('waterfront', '') }}" required>
+            <option value="0">No</option>
+            <option value="1">Yes</option>
+        </select>
+
+        <label for="view">View (0 to 4):</label>
+        <input type="number" id="view" name="view" value="{{ input_values.get('view', '') }}" min="0" max="4" required>
+
+        <label for="condition">Condition (1 to 5):</label>
+        <input type="number" id="condition" value="{{ input_values.get('condition', '') }}" name="condition" min="1" max="5" required>
+
+        <label for="sqftBasement">Sqft Basement:</label>
+        <input type="number" id="sqftBasement" value="{{ input_values.get('sqftBasement', '') }}" name="sqftBasement" required>
+
+        <label for="yearBuilt">Year Built:</label>
+        <input type="number" id="yearBuilt" value="{{ input_values.get('yearBuilt', '') }}" name="yearBuilt" required>
+
+        <label for="yearRenovated">Year Renovated (0 if not renovated):</label>
+        <input type="number" id="yearRenovated" value="{{ input_values.get('yearRenovated', '') }}" name="yearRenovated" required>
+
+        <button type="submit">Predict</button>
+
+        <h2> Estimated Price: {{prediction}} Rs </h2>
+    </form>
+
+</body>
+</html>
