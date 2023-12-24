@@ -1,7 +1,5 @@
 flask
-pandas
-numpy
 scikit-learn
-pickle-mixin
+pickle5
 secrets
 Gunicorn
