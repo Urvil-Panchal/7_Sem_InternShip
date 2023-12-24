@@ -71,5 +71,5 @@ def Predict():
         print(f"Error converting values to float: {e}")
         return "Error in form data. Please enter valid numerical values."
 
-if __name__ == '__main__':
-    app.run(debug=True, host='0.0.0.0')
+# if __name__ == '__main__':
+#     app.run(debug=True, host='0.0.0.0')
