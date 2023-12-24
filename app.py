@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request, session
 import sklearn
 from joblib import load
-import secrets
+# import secrets
 
 
 with open('House_Price_Model.pkl', 'rb') as file:
@@ -9,7 +9,7 @@ with open('House_Price_Model.pkl', 'rb') as file:
 
 app = Flask(__name__)
 
-app.secret_key = secrets.token_hex(16)
+app.secret_key = '802d690c880b4dfd4818df7609d2f5fe'
 
 @app.route("/", methods=['GET', 'POST'])
 def Home():
