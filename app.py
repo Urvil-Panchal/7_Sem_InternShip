@@ -1,10 +1,10 @@
 from flask import Flask, render_template, request, session
 import sklearn
-import pickle
+from joblib import load
 import secrets
 
 with open('House_Price_Model.pkl', 'rb') as file:
-    lin_reg = pickle.load(file)
+    lin_reg = load(file)
 
 app = Flask(__name__)
 app.secret_key = secrets.token_hex(16)
@@ -71,5 +71,5 @@ def Predict():
         print(f"Error converting values to float: {e}")
         return "Error in form data. Please enter valid numerical values."
 
-# if __name__ == '__main__':
-#     app.run(debug=True, host='0.0.0.0')
+if __name__ == '__main__':
+    app.run(debug=True, host='0.0.0.0')
